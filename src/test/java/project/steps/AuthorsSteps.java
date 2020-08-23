@@ -1,6 +1,7 @@
 package project.steps;
 
 import com.codeborne.selenide.Condition;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 import static home.project.PageObject.AuthorsFormPO.*;
@@ -12,6 +13,7 @@ public class AuthorsSteps {
         filterList().findBy(Condition.text(filterName)).should(Condition.appear).click();
     }
 
+    @Given("Set sort post filter")
     public void setSortPostFilter(){
         sortPostButton().click();
     }

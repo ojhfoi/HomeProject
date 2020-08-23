@@ -1,9 +1,13 @@
 package project.steps;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+
 import static home.project.PageObject.AuthorizationFormPO.*;
 
 public class AuthorizationSteps {
 
+    @Given("Insert username {string} and password {string} in authorization form")
     public void LoginInsertSteps(String username, String password) throws Exception{
         try {
             usernameInput().sendKeys(username);
@@ -13,6 +17,7 @@ public class AuthorizationSteps {
         }
     }
 
+    @Given("Inser username {string}, password {string}, phone {string}, email {string} in sign up form")
     public void SignupInsertSteps(String username, String password, String phone, String email) throws Exception{
         try {
             usernameInput().sendKeys(username);
@@ -24,10 +29,12 @@ public class AuthorizationSteps {
         }
     }
 
+    @And("Submit authorization")
     public void ClickSubmit(){
         submitButton().click();
     }
 
+    @Given("Submit sign up")
     public void CliskSignUp(){
         signupButton().click();
     }

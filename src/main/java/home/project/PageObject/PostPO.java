@@ -41,8 +41,8 @@ public class PostPO {
         return tagsCollection;
     }
 
-    public static WebElement saveStoryButton(){
-        WebElement saveStoryBtn = $(saveStory).should(Condition.appear);
+    public static ElementsCollection saveStoryButton(){
+        ElementsCollection saveStoryBtn = $$(saveStory);
         return saveStoryBtn;
     }
 

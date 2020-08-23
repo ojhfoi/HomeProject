@@ -8,13 +8,4 @@ Feature: Open pikabu, go to community and search league of testing.
     Given Select community by name "Лига тестировщиков" from community list
     Given Subscribe on community
     Then Set filter by filter name "Лучшее"
-    And And save post by number
-
-тест 3
-зайти
-сообщества
-поиск - лига тестировщиков
-открыть
-подписаться
-лучшее
-первый пост - сохранить
+    And Save post number 1
