@@ -6,8 +6,7 @@ node{
             [parameters(
                     [choice(
                             choices:
-                                    ['@tsum_gift', '@tsum_bag', '@tsum_shoes', '@tsum_clothe', '@tsum_accessory', '@tsum_mennew', '@tsum_glass', '@tsum_cabinet',
-                                    '@tsum_cart', '@tsum_promo'],
+                                    ['@test1', '@test2', '@test3', '@test4'],
                             description: '', name: 'tags')
                     ])
             ])
