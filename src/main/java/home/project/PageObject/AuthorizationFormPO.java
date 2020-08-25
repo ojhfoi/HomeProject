@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
+/**
+ * Paje Object in authorization form
+ */
 public class AuthorizationFormPO {
 
     //Input type object

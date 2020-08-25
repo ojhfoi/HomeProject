@@ -2,14 +2,15 @@ package home.project.PageObject;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
+/**
+ * Community form page object
+ */
 public class CommunityPage {
 
     private static By search = By.xpath("//div[@class='main']//input[@name='q']");

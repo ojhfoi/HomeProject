@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class PostPO {
 
-    private static By postLink = By.xpath("//a[contains(@class,'link_visited')]");
+    private static By postLink = By.xpath("//h2//a[contains(@href,'story')]");
     private static By tagsBlock = By.xpath("//div[contains(@class,'story__tags')]");
     private static By tagsInBlock = By.xpath("//div[contains(@class,'story__tags')]//a[@class='tags__tag']");
     private static By saveStory = By.xpath("//div[contains(@class,'story__save')]");

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="home.project.DB.Entity.HomeTableEntity" table="homeTable" schema="HomeProject">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="url">
+            <column name="url" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="username">
+            <column name="username" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="pass">
+            <column name="pass" sql-type="varchar(100)" length="100"/>
+        </property>
+    </class>
+</hibernate-mapping>

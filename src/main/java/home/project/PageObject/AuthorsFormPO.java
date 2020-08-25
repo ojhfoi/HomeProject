@@ -9,6 +9,9 @@ import org.openqa.selenium.WebElement;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
+/**
+ * Page Object on Author form
+ */
 public class AuthorsFormPO {
 
     private static By filter = By.xpath("//div[contains(@class,'menu_horizontal')]//a[@class='menu__item']");

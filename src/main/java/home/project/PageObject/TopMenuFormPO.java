@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
+/**
+ *Page object top menu form
+ */
 public class TopMenuFormPO {
 
     private static By hot = By.xpath("//div[@data-feed-key='hot']/a");
