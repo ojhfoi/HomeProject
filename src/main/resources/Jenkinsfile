@@ -1,0 +1,47 @@
+#!groovy
+
+node{
+
+    properties(
+            [parameters(
+                    [choice(
+                            choices:
+                                    ['@tsum_gift', '@tsum_bag', '@tsum_shoes', '@tsum_clothe', '@tsum_accessory', '@tsum_mennew', '@tsum_glass', '@tsum_cabinet',
+                                    '@tsum_cart', '@tsum_promo'],
+                            description: '', name: 'tags')
+                    ])
+            ])
+
+
+    stage("checkout"){
+        try{
+            // tool name: 'allure', type: 'allure'
+            // tool name: 'jdk', type: 'jdk'
+            // tool name: 'mvn', type: 'maven'
+            git branch: 'lesson-tsum', credentialsId: 'e2497f2b-f8b6-4edc-ad90-b8e335836e28', url: 'https://github.com/ojhfoi/IdeaTest.git'
+        }catch (e) {
+            echo 'Checkout finish with error'
+        }
+    }
+    stage("Run test"){
+        try{
+            withMaven(jdk: 'jdk', maven: 'mvn') {
+                sh "mvn clean test -Dcucumber.filter.tags=${tags}"
+            }
+        }catch (e) {
+            echo "Run test failure"
+        }
+    }
+    stage("Allure Report"){
+        try{
+            allure includeProperties: false, jdk: 'jdk',
+                    properties: [
+                            [key: 'allure.issues.tracker.pattern', value: '%'],
+                            [key: 'allure.tests.management.pattern', value: '%']],
+                    results: [[path: 'target/allure-results']
+                    ]
+        }catch (e) {
+            echo"Error in report generation!"
+        }
+    }
+}

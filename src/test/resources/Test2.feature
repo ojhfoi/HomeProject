@@ -1,3 +1,4 @@
+@test2
 Feature: Open pikabu site, go to new post, select author of first post.
   Set filter by rating and sort it from best to bad.
   Click on share and copy link

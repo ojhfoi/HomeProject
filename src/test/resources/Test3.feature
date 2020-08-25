@@ -1,3 +1,4 @@
+@tes3
 Feature: Open pikabu, go to community and search league of testing.
   Open league, then subscribe, select first post and click save
 

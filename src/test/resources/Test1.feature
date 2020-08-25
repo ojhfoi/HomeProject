@@ -1,4 +1,4 @@
-@test
+@test1
 Feature: Open pikabu, go to hot post, select first post, first comment and set plus | minus
 
   Scenario: Uncover PlusCannon
