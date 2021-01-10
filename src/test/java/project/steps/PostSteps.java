@@ -1,14 +1,15 @@
 package project.steps;
 
 import com.codeborne.selenide.Condition;
+import home.project.PageObject.PostPO;
 import home.project.WaitLoad.WaitLoad;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
-import static home.project.PageObject.PostPO.*;
-
 public class PostSteps {
+
+    PostPO postPO = new PostPO();
 
     /**
      * Select story by number and click on
@@ -19,7 +20,10 @@ public class PostSteps {
     public void goToPost(int postNum) throws Exception{
         try{
             WaitLoad.WaitLoadPage();
-            postLinkList().get(postNum-1).should(Condition.appear).click();
+            postPO.postLink
+                    .get(postNum-1)
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
@@ -34,7 +38,10 @@ public class PostSteps {
     public void selectTags(String tags) throws Exception{
         try {
             WaitLoad.WaitLoadPage();
-            tagsList().findBy(Condition.text(tags)).should(Condition.appear).click();
+            postPO.tagsInBlock
+                    .findBy(Condition.text(tags))
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
@@ -51,7 +58,10 @@ public class PostSteps {
     public void clickSaveBtn(int postNum) throws Exception{
         try {
             WaitLoad.WaitLoadPage();
-            saveStoryButton().get(postNum-1).click();
+            postPO.saveStory
+                    .get(postNum-1)
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
@@ -65,7 +75,9 @@ public class PostSteps {
     @Then("Click on share button and copy link")
     public void shareBtnClick() throws Exception{
         try {
-            shareStoryBtn().click();
+            postPO.shareStory
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
@@ -81,7 +93,10 @@ public class PostSteps {
     public void goToStoryAuthor(int postNum) throws Exception{
         try{
             WaitLoad.WaitLoadPage();
-            storyUserLink().get(postNum-1).should(Condition.appear).click();
+            postPO.userLink
+                    .get(postNum-1)
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package project.steps;
 
 import com.codeborne.selenide.Condition;
+import home.project.PageObject.CommunityPage;
 import home.project.WaitLoad.WaitLoad;
 import io.cucumber.java.en.Given;
 
@@ -8,16 +9,21 @@ import static home.project.PageObject.CommunityPage.*;
 
 public class CommunitySteps {
 
+    CommunityPage communityPage = new CommunityPage();
+
     /**
      * Search community by name
      * @param communityName
      * @throws Exception
      */
-    @Given("Search community by name {string}")
+    @Given("Search community {string} by name")
     public void searchCommunity(String communityName) throws Exception{
         try {
-            searchInput().sendKeys(communityName);
-            searchSubmitBtn().click();
+            communityPage.search
+                    .should(Condition.appear)
+                    .sendKeys(communityName);
+            communityPage.searchSubmit
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
@@ -33,7 +39,10 @@ public class CommunitySteps {
     public void selectCommunity(String communityName) throws Exception{
         try {
             WaitLoad.WaitLoadPage();
-            communitiesList().findBy(Condition.text(communityName)).should(Condition.appear).click();
+            communityPage.communities
+                    .findBy(Condition.text(communityName))
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
@@ -47,7 +56,9 @@ public class CommunitySteps {
     @Given("Subscribe on community")
     public void subscribeOnCommunity() throws Exception{
         try {
-            subscribeButton().click();
+            communityPage.subscribe
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();

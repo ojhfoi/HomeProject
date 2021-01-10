@@ -1,6 +1,8 @@
 package project.steps;
 
+import com.codeborne.selenide.Condition;
 import home.project.DB.UserDAO.HomeTableUserDAO;
+import home.project.PageObject.AuthorizationFormPO;
 import home.project.WaitLoad.WaitLoad;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -12,6 +14,7 @@ public class AuthorizationSteps{
 
     @Mock
     private HomeTableUserDAO homeTableUserDAO;
+    AuthorizationFormPO authorizationFormPO = new AuthorizationFormPO();
 
     /**
      * Insert username and password in authorization form
@@ -22,8 +25,11 @@ public class AuthorizationSteps{
     @Given("Insert username {string} and password {string} in authorization form")
     public void LoginInsertSteps(String username, String password) throws Exception{
         try {
-            usernameInput().sendKeys(username);
-            passwordInput().sendKeys(password);
+            authorizationFormPO.username
+                    .should(Condition.appear)
+                    .sendKeys(username);
+            authorizationFormPO.password
+                    .sendKeys(password);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -39,8 +45,11 @@ public class AuthorizationSteps{
             String user = homeTableUserDAO.findData(1).getUsername();
             String pass = homeTableUserDAO.findData(1).getPass();
             System.out.println(user +"\n" + pass);
-            usernameInput().sendKeys(user);
-            passwordInput().sendKeys(pass);
+            authorizationFormPO.username
+                    .should(Condition.appear)
+                    .sendKeys(user);
+            authorizationFormPO.password
+                    .sendKeys(pass);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -57,10 +66,16 @@ public class AuthorizationSteps{
     @Given("Insert username {string}, password {string}, phone {string}, email {string} in sign up form")
     public void SignupInsertSteps(String username, String password, String phone, String email) throws Exception{
         try {
-            usernameInput().sendKeys(username);
-            passwordInput().sendKeys(password);
-            phoneInput().sendKeys(phone);
-            emailInp().sendKeys(email);
+
+            authorizationFormPO.username
+                    .should(Condition.appear)
+                    .sendKeys(username);
+            authorizationFormPO.password
+                    .sendKeys(password);
+            authorizationFormPO.phone
+                    .sendKeys(phone);
+            authorizationFormPO.email
+                    .sendKeys(email);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -71,7 +86,9 @@ public class AuthorizationSteps{
      */
     @And("Submit authorization")
     public void ClickSubmit(){
-        submitButton().click();
+        authorizationFormPO.submit
+                .should(Condition.appear)
+                .click();
         WaitLoad.WaitLoadPage();
     }
 
@@ -80,7 +97,9 @@ public class AuthorizationSteps{
      */
     @Given("Submit sign up")
     public void CliskSignUp(){
-        signupButton().click();
+        authorizationFormPO.signup
+                .should(Condition.appear)
+                .click();
         WaitLoad.WaitLoadPage();
     }
 

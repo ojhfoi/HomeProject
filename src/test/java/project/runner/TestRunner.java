@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeClass;
 @CucumberOptions(
         features = "src/test/resources",
         glue = {"project.steps", "home.project"},
-        tags = "@test4",
+        tags = "",
         plugin = {"pretty", "io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm"},
         monochrome = true
 )

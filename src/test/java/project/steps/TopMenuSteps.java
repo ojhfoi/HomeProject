@@ -1,12 +1,13 @@
 package project.steps;
 
+import com.codeborne.selenide.Condition;
+import home.project.PageObject.TopMenuFormPO;
 import home.project.WaitLoad.WaitLoad;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en_scouse.An;
-
-import static home.project.PageObject.TopMenuFormPO.*;
 
 public class TopMenuSteps {
+
+    TopMenuFormPO topMenuFormPO = new TopMenuFormPO();
 
     /**
      * Click on hot story link
@@ -15,7 +16,9 @@ public class TopMenuSteps {
     @And("Go to hot post")
     public void goToHotStory() throws Exception{
         try {
-            hotLink().click();
+            topMenuFormPO.hot
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
@@ -29,7 +32,9 @@ public class TopMenuSteps {
     @And("Go to new post")
     public void goToNewsStory() throws Exception{
         try {
-            newPostLink().click();
+            topMenuFormPO.newPost
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
@@ -43,7 +48,9 @@ public class TopMenuSteps {
     @And("Go to community")
     public void goToCommunity() throws Exception{
         try {
-            communityLink().click();
+            topMenuFormPO.community
+                    .should(Condition.appear)
+                    .click();
             WaitLoad.WaitLoadPage();
         }catch (Exception e){
             e.printStackTrace();
